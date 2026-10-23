@@ -1,0 +1,663 @@
+/* ===== CONFIGURACIÓN GENERAL ===== */
+
+:root {
+  --principal: #2563eb;
+  --principal-oscuro: #1d4ed8;
+  --fondo: #f4f7fc;
+  --texto: #15243b;
+  --secundario: #586981;
+  --borde: #dce5f1;
+  --blanco: #ffffff;
+  --radio: 24px;
+  --sombra: 0 15px 45px rgba(20, 45, 90, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+}
+
+.contenedor {
+  width: min(1160px, 90%);
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1,
+h2 {
+  letter-spacing: -1px;
+}
+
+/* ===== ACCESIBILIDAD ===== */
+
+.saltar-contenido {
+  position: absolute;
+  top: -150px;
+  left: 20px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--blanco);
+  color: var(--principal);
+}
+
+.saltar-contenido:focus {
+  top: 15px;
+}
+
+:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 5px;
+}
+
+/* ===== ENCABEZADO ===== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--borde);
+  backdrop-filter: blur(14px);
+}
+
+.barra {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.marca-icono {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #2563eb, #1648b8);
+  color: var(--blanco);
+  font-size: 1.8rem;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--secundario);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--principal);
+}
+
+/* ===== BOTONES ===== */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 13px 25px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: var(--principal);
+  color: var(--blanco);
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.18);
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.boton:hover {
+  background: var(--principal-oscuro);
+  color: var(--blanco);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+}
+
+.boton-secundario {
+  background: var(--blanco);
+  color: var(--principal);
+  border-color: #c8d9f5;
+  box-shadow: none;
+}
+
+.boton-secundario:hover {
+  background: #eaf1ff;
+  color: var(--principal-oscuro);
+  box-shadow: none;
+}
+
+/* ===== PRESENTACIÓN ===== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(96, 165, 250, 0.23),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #f7faff 0%, #eaf1fc 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -190px;
+  bottom: -220px;
+  border: 55px solid rgba(37, 99, 235, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 65px;
+}
+
+/* Evita desbordes por contenido largo */
+.hero-grid > *,
+.servicios-grid > *,
+.profesional-grid > *,
+.contacto-grid > * {
+  min-width: 0;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 7px 13px;
+  border: 1px solid #ccdcfa;
+  border-radius: 50px;
+  background: #e8f0ff;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 650px;
+  margin-bottom: 25px;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.hero p {
+  max-width: 540px;
+  color: var(--secundario);
+  font-size: 1.08rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 32px;
+}
+
+/* ===== TARJETA DE TURNOS ===== */
+
+.tarjeta-turnos {
+  position: relative;
+  padding: 35px;
+  border: 1px solid var(--blanco);
+  border-radius: 28px;
+  background: var(--blanco);
+  box-shadow: 0 25px 65px rgba(26, 58, 110, 0.12);
+}
+
+.tarjeta-turnos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 35px;
+  right: 35px;
+  height: 5px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(90deg, #2563eb, #7dd3fc);
+}
+
+.tarjeta-turnos h2 {
+  margin-bottom: 14px;
+  font-size: 1.65rem;
+}
+
+.tarjeta-turnos p {
+  font-size: 0.95rem;
+}
+
+.dato-turno {
+  padding: 19px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.dato-turno span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--secundario);
+  font-size: 0.85rem;
+}
+
+.dato-turno strong {
+  font-size: 0.95rem;
+}
+
+.tarjeta-turnos .boton {
+  width: 100%;
+  margin-top: 25px;
+}
+
+/* ===== SECCIONES ===== */
+
+.seccion {
+  padding: 85px 0;
+}
+
+.encabezado-seccion {
+  max-width: 650px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+  font-weight: 750;
+}
+
+.encabezado-seccion p,
+.tarjeta p,
+.profesional-texto p {
+  color: var(--secundario);
+}
+
+/* ===== SERVICIOS ===== */
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.tarjeta {
+  padding: 34px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--blanco);
+  box-shadow: var(--sombra);
+}
+
+.servicios-grid .tarjeta {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.servicios-grid .tarjeta:hover {
+  transform: translateY(-8px);
+  border-color: #a8c5fa;
+  box-shadow: 0 22px 45px rgba(37, 99, 235, 0.12);
+}
+
+.numero {
+  display: inline-grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 25px;
+  border-radius: 17px;
+  background: #eaf1ff;
+  color: var(--principal);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.tarjeta h3 {
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+}
+
+.tarjeta p {
+  font-size: 0.98rem;
+}
+
+/* ===== PROFESIONAL ===== */
+
+.profesional {
+  background: #12243f;
+}
+
+.profesional-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.perfil {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #244b7b, #17304f);
+  color: var(--blanco);
+  text-align: center;
+}
+
+.iniciales {
+  display: grid;
+  place-items: center;
+  width: 130px;
+  height: 130px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.perfil p {
+  font-size: 1.05rem;
+}
+
+.profesional-texto h2 {
+  color: var(--blanco);
+}
+
+.profesional-texto p {
+  color: #c6d3e5;
+}
+
+.profesional-texto p + p {
+  margin-top: 18px;
+}
+
+.profesional-texto .etiqueta {
+  border-color: #4d6b95;
+  background: #203c60;
+  color: #d3e6ff;
+}
+
+/* ===== CONTACTO ===== */
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 25px;
+}
+
+.contacto-grid .tarjeta:last-child {
+  background: #eaf1ff;
+  border-color: #d4e2fb;
+  box-shadow: none;
+}
+
+.lista-contacto {
+  list-style: none;
+}
+
+.lista-contacto li {
+  padding: 16px 0;
+  color: var(--secundario);
+  border-bottom: 1px solid var(--borde);
+}
+
+.lista-contacto li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.lista-contacto strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--texto);
+  font-size: 0.95rem;
+}
+
+address {
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.aviso {
+  margin-top: 22px;
+  padding-left: 15px;
+  border-left: 3px solid var(--principal);
+  color: var(--secundario);
+  font-size: 0.9rem;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+
+footer {
+  padding: 30px 0;
+  border-top: 1px solid var(--borde);
+  background: var(--blanco);
+  color: var(--secundario);
+  font-size: 0.9rem;
+}
+
+.pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* ===== TABLETS ===== */
+
+@media (max-width: 950px) {
+  .hero-grid {
+    gap: 35px;
+  }
+
+  .profesional-grid {
+    gap: 40px;
+  }
+
+  .servicios-grid {
+    gap: 16px;
+  }
+
+  .tarjeta {
+    padding: 25px;
+  }
+
+  nav {
+    gap: 20px;
+  }
+}
+
+/* ===== CELULARES ===== */
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 170px;
+  }
+
+  .barra {
+    min-height: auto;
+    padding: 18px 0;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  nav .boton {
+    min-height: 42px;
+    padding: 9px 16px;
+  }
+
+  .hero {
+    padding: 55px 0;
+  }
+
+  .hero-grid,
+  .profesional-grid,
+  .contacto-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 9vw, 3.5rem);
+    letter-spacing: -1.5px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .seccion {
+    padding: 60px 0;
+  }
+
+  .encabezado-seccion {
+    margin-bottom: 30px;
+  }
+
+  .tarjeta-turnos {
+    padding: 28px;
+  }
+
+  .perfil {
+    min-height: 290px;
+  }
+
+  .pie {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ===== PANTALLAS PEQUEÑAS ===== */
+
+@media (max-width: 400px) {
+  .contenedor {
+    width: 92%;
+  }
+
+  .marca {
+    font-size: 1.05rem;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .acciones .boton {
+    width: 100%;
+  }
+
+  .tarjeta,
+  .tarjeta-turnos {
+    padding: 24px;
+  }
+
+  .etiqueta {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* ===== MOVIMIENTO REDUCIDO ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .boton:hover,
+  .servicios-grid .tarjeta:hover {
+    transform: none;
+  }
+}
